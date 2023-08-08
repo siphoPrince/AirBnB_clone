@@ -23,8 +23,16 @@ class BaseModel:
             self.updated_at = datetime.now()
             self.save()
         else:
-            kwargs['created_at'] = datetime.strptime(kwargs['created_at'], '%Y-%M-%dT%H:%M:%S.%f')
-            kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'], '%Y-%M-%dT%H:%M:%S.%f')
+            kwargs['created_at'] = datetime.strptime(kwargs['created_at'],
+                    '%Y-%M-%dT%H:%M:%S.%f')
+            kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'],
+                    '%Y-%M-%dT%H:%M:%S.%f')
+
+    def save(self):
+     '''
+     update public update at current time instance
+     '''
+     self.updated_at = datetime.now()
     
     def __str__(self):
         """string representation of an object"""
@@ -33,15 +41,10 @@ class BaseModel:
     def to_dict(self):
         """returns a dictionary containing all keys/values
         of __dict__ of the instance"""
-        dictionary = self.__dict__
+        dictionary = dict(self.__dict__)
+        dictionary['created_at'] = dictionary['created_at'].isoformat()
+        dictionary['updated_at'] = dictionary['updated_at'].isoformat()
         dictionary['__class__'] = self.__class__.__name__
-        dictionary['created_at'] = dictionary['created_at'].isoformat
-        dictionary['updated_at'] = dictionary['updated_at'].isoformat
 
         return dictionary
-            
-    def save(self):
-        '''
-        update public update at current time instance
-        '''
-        self.updated_at = datetime.now()
+
