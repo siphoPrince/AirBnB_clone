@@ -35,11 +35,9 @@ class FileStorage:
         '''
 
         my_dict = {}
-        #my_dict.update(FileStorage.__objects)
-        for key in self.__objects:
-            #my_dict[key] = value.to_dict()
-             my_dict[key] = self.__objects[key].to_dict()
-        with open(FileStorage.__file_path, "w+") as write_file:
+        for key, value in self.__objects.items():
+            my_dict[key] = value.to_dict()
+        with open(self.__file_path, "w") as write_file:
             json.dump(my_dict, write_file)
 
     def reload(self):
