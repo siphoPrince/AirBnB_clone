@@ -2,7 +2,7 @@
 '''
 serialized and deserialized instances to a json file
 '''
-
+from models.base_model import BaseModel
 import json
 from datetime import datetime
 
