@@ -12,20 +12,26 @@ class FileStorage:
     fillestorage class representation
     '''
 
-    __path = "JSONstorage.json"
+    __file_path = "JSONstorage.json"
     __objects = {}
 
+    def new(self, obj):
+        """sets in __objects the obj
+        with key <obj class name>.id"""
+        
+        key = obj.to_dict()['__class__'] + "." + obj.id
+        self.__objects[key] = obj
+    
     def save(self):
         '''
-        converting data that is stored in a JSON
-        back into its original structure
+        converting python data to JSON
+        data structure
         '''
 
         my_dict = {}
-        my_dict.update(FileStorage.__objects)
-        for key, value in my_dict.items():
-            my_dict[key] = value.to_dict()
-        with open(FileStorage._file_path, "w+") as write_file:
+        for key in self.__objects:
+            my_dict[key] = self.__objects[key].to_dict()
+        with open(FileStorage.__file_path, "w+") as write_file:
             json.dump(my_dict, write_file)
 
     def reload(self):
@@ -36,7 +42,7 @@ class FileStorage:
         new_dict = {}
         try:
             from models.base_model import BaseModel
-            with open(self.__path, "r") as read_file:
+            with open(self.__file_path, "r") as read_file:
                 new_dict = json.load(read_file)
                 for key, value in new_dict.items():
                     FileStorage.__objects[key] = BaseModel(**value)
@@ -49,9 +55,9 @@ class FileStorage:
         '''
         return FileStorage.__objects
 
-    def new(self, obj):
+#    def new(self, obj):
         '''
-        sets __objects with key <obj class name>.id
+   #     sets __objects with key <obj class name>.id
         '''
-        key = obj.to_dict()['__class__'] + "." + obj.id
-        FileStorage.__objects.update({key:obj})
+  #      key = obj.to_dict()['__class__'] + "." + obj.id
+ #       FileStorage.__objects.update({key:obj})
