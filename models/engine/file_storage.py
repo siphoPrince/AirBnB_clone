@@ -53,6 +53,6 @@ class FileStorage:
             with open(self.__file_path, "r") as read_file:
                 new_dict = json.load(read_file)
                 for key, value in new_dict.items():
-                    self.__objects[key] = BaseModel(**value)
+                    FileStorage.__objects[key] = BaseModel(**value)
         except IOError:
             pass
