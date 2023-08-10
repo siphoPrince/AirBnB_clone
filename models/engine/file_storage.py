@@ -35,8 +35,8 @@ class FileStorage:
         '''
 
         my_dict = {}
-        my_dict.update(FileStorage.__objects)
-        for key in my_dict():
+        #my_dict.update(FileStorage.__objects)
+        for key in FileStorage.__objects:
             #my_dict[key] = value.to_dict()
              my_dict[key] = FileStorage.__objects[key].to_dict()
         with open(FileStorage.__file_path, "w+") as write_file:
