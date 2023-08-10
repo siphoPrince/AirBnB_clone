@@ -36,7 +36,11 @@ class FileStorage:
 
         my_dict = {}
         for key, value in self.__objects.items():
-            my_dict[key] = value.to_dict()
+            if isinstance(value, BaseModel):
+                my_dict[key] = value.to_dict()
+            else:
+                 print(f"Object {value} is not an instance of BaseModel.")
+
         with open(self.__file_path, "w") as write_file:
             json.dump(my_dict, write_file)
 
