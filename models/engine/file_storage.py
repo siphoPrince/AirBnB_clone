@@ -19,14 +19,14 @@ class FileStorage:
         '''
         returns all dictionary
         '''
-        return FileStorage.__objects
+        return self.__objects
         
     def new(self, obj):
         """sets in __objects the obj
         with key <obj class name>.id"""
         
         key = obj.to_dict()['__class__'] + "." + obj.id
-        FileStorage.__objects[key] = obj
+        self.__objects[key] = obj
     
     def save(self):
         '''
@@ -36,9 +36,9 @@ class FileStorage:
 
         my_dict = {}
         #my_dict.update(FileStorage.__objects)
-        for key in FileStorage.__objects:
+        for key in self.__objects:
             #my_dict[key] = value.to_dict()
-             my_dict[key] = FileStorage.__objects[key].to_dict()
+             my_dict[key] = self.__objects[key].to_dict()
         with open(FileStorage.__file_path, "w+") as write_file:
             json.dump(my_dict, write_file)
 
@@ -53,6 +53,6 @@ class FileStorage:
             with open(self.__file_path, "r") as read_file:
                 new_dict = json.load(read_file)
                 for key, value in new_dict.items():
-                    FileStorage.__objects[key] = BaseModel(**value)
+                    self.__objects[key] = BaseModel(**value)
         except IOError:
             pass
