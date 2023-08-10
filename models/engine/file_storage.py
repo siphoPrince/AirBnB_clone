@@ -15,6 +15,12 @@ class FileStorage:
     __file_path = "JSONstorage.json"
     __objects = {}
 
+    def all(self):
+        '''
+        returns all dictionary
+        '''
+        return FileStorage.__objects
+        
     def new(self, obj):
         """sets in __objects the obj
         with key <obj class name>.id"""
@@ -51,16 +57,3 @@ class FileStorage:
                     FileStorage.__objects[key] = BaseModel(**value)
         except IOError:
             pass
-
-    def all(self):
-        '''
-        returns all dictionary
-        '''
-        return FileStorage.__objects
-
-#    def new(self, obj):
-        '''
-   #     sets __objects with key <obj class name>.id
-        '''
-  #      key = obj.to_dict()['__class__'] + "." + obj.id
- #       FileStorage.__objects.update({key:obj})
