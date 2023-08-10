@@ -12,7 +12,7 @@ class FileStorage:
     fillestorage class representation
     '''
 
-    __path = "JSONstorage.json"
+    __file_path = "JSONstorage.json"
     __objects = {}
 
     def save(self):
@@ -25,7 +25,7 @@ class FileStorage:
         my_dict.update(FileStorage.__objects)
         for key, value in my_dict.items():
             my_dict[key] = value.to_dict()
-        with open(FileStorage._file_path, "w+") as write_file:
+        with open(FileStorage.__file_path, "w+") as write_file:
             json.dump(my_dict, write_file)
 
     def reload(self):
@@ -36,7 +36,7 @@ class FileStorage:
         new_dict = {}
         try:
             from models.base_model import BaseModel
-            with open(self.__path, "r") as read_file:
+            with open(self.__file_path, "r") as read_file:
                 new_dict = json.load(read_file)
                 for key, value in new_dict.items():
                     FileStorage.__objects[key] = BaseModel(**value)
