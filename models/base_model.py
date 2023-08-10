@@ -28,6 +28,11 @@ class BaseModel:
         else:
             kwargs['created_at'] = datetime.strptime(kwargs['created_at'], '%Y-%M-%dT%H:%M:%S.%f')
             kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'], '%Y-%M-%dT%H:%M:%S.%f')
+            
+            for i, j in kwargs.items():
+                if "__class__" not in i:
+                    setattr(self, i, j)
+
     
     def __str__(self):
         """string representation of an object"""
