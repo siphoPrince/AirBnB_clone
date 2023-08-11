@@ -2,9 +2,8 @@
 '''
 serialized and deserialized instances to a json file
 '''
-from models.base_model import BaseModel
 import json
-from datetime import datetime
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -25,7 +24,8 @@ class FileStorage:
         """sets in __objects the obj
         with key <obj class name>.id"""
         
-        key = obj.to_dict()['__class__'] + "." + obj.id
+        #key = obj.to_dict()['__class__'] + "." + obj.id
+        key = "{}.{}".format(__class__.__name__, obj.id)
         self.__objects[key] = obj
     
     def save(self):
@@ -36,12 +36,8 @@ class FileStorage:
 
         my_dict = {}
         for key, value in self.__objects.items():
-            if isinstance(value, BaseModel):
-                my_dict[key] = value.to_dict()
-            else:
-                 print(f"Object {value} is not an instance of BaseModel.")
-
-        with open(self.__file_path, "w") as write_file:
+            my_dict[key] = value.to_dict()
+        with open(self.__file_path, "w", encoding="utf-8") as write_file:
             json.dump(my_dict, write_file)
 
     def reload(self):
@@ -51,10 +47,11 @@ class FileStorage:
         '''
         new_dict = {}
         try:
-            from models.base_model import BaseModel
-            with open(self.__file_path, "r") as read_file:
+            with open(self.__file_path, "r", encoding="utf-8") as read_file:
                 new_dict = json.load(read_file)
-                for key, value in new_dict.items():
-                    FileStorage.__objects[key] = BaseModel(**value)
+            
+            for key, value in new_dict.items():
+                    #FileStorage.__objects[key] = BaseModel(**value)
+                    self.new(eval(key.split(".")[0])(**value))
         except IOError:
             pass
