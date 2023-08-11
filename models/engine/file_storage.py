@@ -52,10 +52,7 @@ class FileStorage:
             
             for key, value in new_dict.items():
                 class_name = key.split(".")[0]
-                class_type = globals().get(class_name)
-                if class_type is not None:
-                    self.new(class_type(**value))
-                    #FileStorage.__objects[key] = BaseModel(**value)
-                    #self.new(eval(key.split(".")[0])(**value))
+                #FileStorage.__objects[key] = BaseModel(**value)
+                self.new(eval(class_name)(**value))
         except IOError:
             pass
