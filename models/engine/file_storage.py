@@ -50,8 +50,6 @@ class FileStorage:
             with open(self.__file_path, "r", encoding="utf-8") as read_file:
                 new_dict = json.load(read_file)
             for key, value in new_dict.items():
-                #class_name = key.split(".")[0]
                 self.__objects[key] = BaseModel(**value)
-                #self.new(eval(class_name)(**value))
         except FileNotFoundError:
             pass
