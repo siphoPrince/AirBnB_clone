@@ -61,6 +61,7 @@ class FileStorage:
         Load serialized data from the JSON file and create instances.
         """
         try:
+            from models.base_model import BaseModel
             with open(self.__file_path, encoding="utf-8") as fd:
                 json_fvar = json.load(fd)
 
