@@ -53,5 +53,5 @@ class FileStorage:
                 #class_name = key.split(".")[0]
                 self.__objects[key] = BaseModel(**value)
                 #self.new(eval(class_name)(**value))
-        except IOError:
+        except FileNotFoundError:
             pass
