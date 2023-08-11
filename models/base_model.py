@@ -1,12 +1,13 @@
 #!/usr/bin/python3
-from datetime import datetime
-import uuid
-#from models import storage
-import models
 '''
 This is a base model that defines all common attributes and
 methods of other classes
 '''
+from datetime import datetime
+import uuid
+#from models import storage
+import models
+
 
 class BaseModel:
     '''
@@ -46,8 +47,8 @@ class BaseModel:
         """returns a dictionary containing all keys/values
         of __dict__ of the instance"""
         dictionary = dict(self.__dict__)
+        dictionary['__class__'] = self.__class__.__name__
         dictionary['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         dictionary['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        dictionary['__class__'] = self.__class__.__name__
         return dictionary
             
