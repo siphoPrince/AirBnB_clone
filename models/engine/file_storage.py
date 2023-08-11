@@ -42,14 +42,16 @@ class FileStorage:
 
     def reload(self):
         '''
-        if __path file exits the deserialize the json file
-        If not then do nothing
+        Deserializes the JSON file to __objects (if the JSON file exists).
+        If the file doesn't exist or any other error occurs, do nothing.
         '''
-        new_dict = {}
         try:
-            with open(self.__file_path, "r", encoding="utf-8") as read_file:
-                new_dict = json.load(read_file)
-            for key, value in new_dict.items():
-                self.__objects[key] = BaseModel(**value)
-        except FileNotFoundError:
+            with open(self.__file_path, "r") as read_file:
+                data = json.load(read_file)
+                for key, value in data.items():
+                    if key not in self.__objects:
+                        self.__objects[key] = BaseModel(**value)
+        except (FileNotFoundError, json.JSONDecodeError, TypeError):
+            # Handle file not found, JSON decoding error, or unexpected value types
             pass
+
