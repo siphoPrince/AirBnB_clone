@@ -40,32 +40,19 @@ class FileStorage:
         with open(self.__file_path, "w", encoding="utf-8") as write_file:
             json.dump(my_dict, write_file)
 
-    #def reload(self):
+     def reload(self):
         '''
         if __path file exits the deserialize the json file
         If not then do nothing
         '''
-      #  new_dict = {}
-        #try:
-         #   with open(self.__file_path, "r", encoding="utf-8") as read_file:
-          #      new_dict = json.load(read_file)
-             
-           # for key, value in new_dict.items():
-            #    class_name = key.split(".")[0]
-                #FileStorage.__objects[key] = BaseModel(**value)
-             #   self.new(class_name)(**value)
-        #except IOError:
-         #   pass
-    def reload(self):
-        """
-        Load serialized data from the JSON file and create instances.
-        """
+        new_dict = {}
         try:
-            from models.base_model import BaseModel
-            with open(self.__file_path, encoding="utf-8") as fd:
-                json_fvar = json.load(fd)
-
-            for key, value in json_fvar.items():
-                self.new(eval(key.split(".")[0])(**value))
-        except FileNotFoundError:
+            with open(self.__file_path, "r", encoding="utf-8") as read_file:
+                new_dict = json.load(read_file)
+                self.__objects = new_dict
+            #for key, value in new_dict.items():
+                #class_name = key.split(".")[0]
+                #FileStorage.__objects[key] = BaseModel(**value)
+                #self.new(eval(class_name)(**value))
+        except IOError:
             pass
