@@ -49,10 +49,9 @@ class FileStorage:
         try:
             with open(self.__file_path, "r", encoding="utf-8") as read_file:
                 new_dict = json.load(read_file)
-                self.__objects = new_dict
-            #for key, value in new_dict.items():
+            for key, value in new_dict.items():
                 #class_name = key.split(".")[0]
-                #FileStorage.__objects[key] = BaseModel(**value)
+                self.__objects[key] = BaseModel(**value)
                 #self.new(eval(class_name)(**value))
         except IOError:
             pass
