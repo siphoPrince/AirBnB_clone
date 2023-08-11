@@ -40,7 +40,7 @@ class FileStorage:
         with open(self.__file_path, "w", encoding="utf-8") as write_file:
             json.dump(my_dict, write_file)
 
-     def reload(self):
+    def reload(self):
         '''
         if __path file exits the deserialize the json file
         If not then do nothing
