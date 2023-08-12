@@ -9,6 +9,7 @@ from models.state import State
 from models.place import Place
 from models.review import Review
 from models.amenity import Amenity
+import models.engine
 import models.engine.file_storage
 
 
