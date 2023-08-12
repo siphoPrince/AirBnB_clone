@@ -19,6 +19,7 @@ ClassDict = {"BaseModel": BaseModel,
               "City": City,
               "Review": Review}
 
+
 class HBNBCommand(cmd.Cmd):
     """command interpreter implements:
     quit, EOF, help, prompt"""
