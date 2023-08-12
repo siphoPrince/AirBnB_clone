@@ -17,7 +17,7 @@ To start using the AirBnB Clone Command Interpreter, follow these steps:
 
 2. Navigate to the project directory:
    ```
-   cd airbnb-clone
+   cd Airbnb-clone
    ```
 
 3. Install any necessary dependencies. Make sure you have Python installed on your system.
@@ -28,7 +28,7 @@ Once you have the project set up, you can use the command interpreter by followi
 
 1. Launch the command interpreter by running the following command:
    ```
-   python console.py
+   python3 console.py
    ```
 
 2. You will be presented with a prompt where you can enter various commands to manage AirBnB objects.
@@ -67,4 +67,3 @@ Once you have the project set up, you can use the command interpreter by followi
 The individuals who have contributed to this project are listed in the [AUTHORS](AUTHORS) file at the root of the repository. This file follows a format similar to Docker's [AUTHORS page.
 
 ## Using Branches and Pull Requests
-
