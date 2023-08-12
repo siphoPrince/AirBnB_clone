@@ -110,7 +110,7 @@ class HBNBCommand(cmd.Cmd):
         """
         new_list = []
         if arg:
-            if arg not in Class_Dict:
+            if arg not in ClassDict:
                 print("** class doesn't exist **")
                 return
             for key, value in storage._FileStorage__objects.items():
