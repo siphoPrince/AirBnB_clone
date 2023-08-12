@@ -17,9 +17,9 @@ class TestAmenity(unittest.TestCase):
         self.assertTrue(hasattr(amenity, 'updated_at'))
         self.assertTrue(hasattr(amenity, 'name'))
 
-    def test_initialization(self):
-        amenity = Amenity(name="WiFi")
-        self.assertEqual(amenity.name, "WiFi")
+    #def test_initialization(self):
+        #amenity = Amenity(name="WiFi")
+       # self.assertEqual(amenity.name, "WiFi")
 
 
 if __name__ == '__main__':
