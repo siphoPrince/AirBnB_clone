@@ -56,7 +56,7 @@ class TestPlace(unittest.TestCase):
         self.assertTrue(type(place.max_guest) == int)
         self.assertTrue(type(place.price_by_night) == int)
         self.assertTrue(type(place.latitude) == float)
-        self.assertTrue(type(place.longitude) == str)
+        self.assertTrue(type(place.longitude) == float)
         self.assertTrue(type(place.amenity_ids) == list)
         
 if __name__ == "__main__":

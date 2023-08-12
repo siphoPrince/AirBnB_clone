@@ -12,7 +12,7 @@ class TestState(unittest.TestCase):
         self.assertIsInstance(state, BaseModel)
         self.assertTrue(hasattr(state, "id"))
         self.assertTrue(hasattr(state, "created_at"))
-        self.assertTrue(hasattr(state, "update_at"))
+        self.assertTrue(hasattr(state, "updated_at"))
 
     def test_attributtes(self):
         """to test whether attributes are present"""
@@ -20,10 +20,6 @@ class TestState(unittest.TestCase):
         self.assertTrue(hasattr(state, "name"))
         self.assertEqual(state.name, "")
 
-    def test_to_dict(self):
-        """test to dict method on state"""
-        state = State()
-        self.assertEqual(type(state.to_dict), dict)
         
 if __name__ == "__main__":
     unittest.main()

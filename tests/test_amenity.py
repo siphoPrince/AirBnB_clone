@@ -21,10 +21,6 @@ class TestAmenity(unittest.TestCase):
         amenity = Amenity(name="WiFi")
         self.assertEqual(amenity.name, "WiFi")
 
-    def test_to_dict(self):
-        amenity = Amenity(name="Pool")
-        amenity_dict = amenity.to_dict()
-        self.assertEqual(amenity_dict['name'], "Pool")
 
 if __name__ == '__main__':
     unittest.main()

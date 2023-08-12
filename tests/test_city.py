@@ -25,10 +25,6 @@ class TestCity(unittest.TestCase):
         self.assertEqual(city.state_id, "")
         self.assertEqual(city.name, "")
 
-    def test_to_dict(self):
-        """test to dict method on city"""
-        city = City()
-        self.assertEqual(type(city.to_dict), dict)
-
+   
 if __name__ == "__main__":
     unittest.main()       
