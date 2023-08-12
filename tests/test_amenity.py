@@ -1,6 +1,7 @@
 import unittest
 from models.amenity import Amenity
 import models.amenity
+from models.base_model import BaseModel
 
 
 class TestAmenity(unittest.TestCase):

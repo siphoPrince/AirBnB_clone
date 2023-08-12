@@ -1,6 +1,6 @@
 """Test case for City Model"""
 import unittest
-from models import  City
+from models.city import  City
 from models import BaseModel
 
 class TestCity(unittest, TestCase):

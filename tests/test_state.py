@@ -1,7 +1,7 @@
 """Test case for State class"""
 import unittest
 import models
-from models import State
+from models.state import State
 from models import BaseModel
 
 class TestState(unittest, TestCase):

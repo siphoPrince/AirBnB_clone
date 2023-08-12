@@ -1,7 +1,7 @@
 """Test case for Place Class"""
 import models
 import unittest
-from models import Place
+from models.place import Place
 from models import BaseModel
 
 class TestPlace(unittest, TestCase):

@@ -1,7 +1,7 @@
 """Test case for user class"""
 import models
 import unittest
-from models import User
+from models.user import User
 from models import BaseModel
 
 class TestUser(unittest, TestCase):

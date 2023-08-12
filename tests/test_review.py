@@ -1,8 +1,8 @@
 """Test case for Review Class"""
 import models
 import unittest
-from models import Review
-from models import BaseModel
+from models.review import Review
+from models.base_model import BaseModel
 
 class TestReview(unittest, TestCase):
     """Test case for Review Class"""
