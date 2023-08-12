@@ -56,7 +56,8 @@ class FileStorage:
                 data = json.load(read_file)
                 for key, value in data.items():
                     if key not in self.__objects:
-                        self.__objects[key] = BaseModel(**value)
+                        if value['__class__'] == 'User':
+                            self.__objects[key] = BaseModel(**value)
         except (FileNotFoundError, json.JSONDecodeError, TypeError):
             # Handle file not found, JSON decoding error, or unexpected value types
             pass
