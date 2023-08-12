@@ -145,7 +145,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
             return
         
-        ob = elf.__objects[key]
+        ob = self.__objects[key]
         if hasattr(ob, attribute_name):
             setattr(ob, attribute_name, attribute_value)
             ob.updated_at = datetime.now()
