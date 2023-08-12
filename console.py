@@ -11,8 +11,8 @@ from models.place import Place
 from models.review import Review
 
 
-ClassDict = {"BaseModel": BaseModel, "User": User, "Place": Place, "State": State,
-              "Amenity": Amenity, "City": City, "Review": Review}
+ClassDict = {"BaseModel": BaseModel, "User": User, "Place": Place, 
+             "State": State, "Amenity": Amenity, "City": City, "Review": Review}
 
 
 class HBNBCommand(cmd.Cmd):
