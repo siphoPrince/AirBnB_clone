@@ -3,7 +3,7 @@ import unittest
 from models.city import  City
 from models import BaseModel
 
-class TestCity(unittest, TestCase):
+class TestCity(unittest.TestCase):
     """unittest for city class"""
     
     def test_Inheritance(self):

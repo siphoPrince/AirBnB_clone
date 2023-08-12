@@ -4,7 +4,7 @@ import unittest
 from models.review import Review
 from models.base_model import BaseModel
 
-class TestReview(unittest, TestCase):
+class TestReview(unittest.TestCase):
     """Test case for Review Class"""
     def test_inheritance(self):
         """test if class was able to innherit BaseModel"""

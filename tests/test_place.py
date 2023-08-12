@@ -4,7 +4,7 @@ import unittest
 from models.place import Place
 from models import BaseModel
 
-class TestPlace(unittest, TestCase):
+class TestPlace(unittest.TestCase):
     """Test case for place class"""
     def test_inheritance(self):
         """testing whether class inherits from BaseModel"""

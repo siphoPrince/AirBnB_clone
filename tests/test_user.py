@@ -4,7 +4,7 @@ import unittest
 from models.user import User
 from models import BaseModel
 
-class TestUser(unittest, TestCase):
+class TestUser(unittest.TestCase):
     """Test case for user class"""
 def test_inheritance(self):
         """test if class was able to innherit BaseModel"""

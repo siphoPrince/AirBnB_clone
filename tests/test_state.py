@@ -4,7 +4,7 @@ import models
 from models.state import State
 from models import BaseModel
 
-class TestState(unittest, TestCase):
+class TestState(unittest.TestCase):
     """Test case for state classes """
     def test_inheritance(self):
         """to test whether it inherits from BaseModel"""
