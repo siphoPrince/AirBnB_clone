@@ -14,8 +14,7 @@ import models.engine.file_storage
 
 class TestFileStorage(unittest.TestCase):
     """testcases for file storage methods"""
-    __file_path = "file.json"
-
+    
     def test_attr(self):
         """test if attributes created"""
         file_store = FileStorage()
