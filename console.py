@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """The entry point of the command interpreter"""
 import cmd
-
+from datetime import datetime
+from models import storage
 from models.base_model import BaseModel
 from models.user import User
 from models.city import City
@@ -10,18 +11,25 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-
-ClassDict = {"BaseModel": BaseModel, "User": User, "Place": Place,
-             "State": State, "Amenity": Amenity, "City": City, "Review": Review}
-
+# Class dictionary for the available classes
+ClassDict = {
+    "BaseModel": BaseModel,
+    "User": User,
+    "Place": Place,
+    "State": State,
+    "Amenity": Amenity,
+    "City": City,
+    "Review": Review,
+}
 
 class HBNBCommand(cmd.Cmd):
-    """command interpreter implements:
-    quit, EOF, help, prompt"""
-    prompt = "(hbnb)"
+    """Command interpreter for managing instances"""
+
+    # Set the command prompt
+    prompt = "(hbnb) "
 
     def emptyline(self):
-        """an empty line + ENTER shouldn’t execute anything"""
+        """An empty line + ENTER shouldn’t execute anything"""
         pass
 
     def do_quit(self, line):
@@ -29,126 +37,104 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_EOF(self, line):
-        """exit the program"""
+        """Exit the program"""
         return True
 
     def do_create(self, args):
-        '''
-         Creates a new instance of BaseModel
-        '''
+        """Create a new instance of a class and save it to storage"""
         if not args:
             print('** class name missing **')
             return
-        elif args in ClassDict:
-            for key, value in ClassDict.items():
-                if key == args:
-                    newInstance = ClassDict[key]()
+        class_name = args
+        if class_name in ClassDict:
+            newInstance = ClassDict[class_name]()
+            storage.new(newInstance)
             storage.save()
             print(newInstance.id)
         else:
-            print("** Class dosen't exist**")
+            print("** class doesn't exist **")
 
     def do_show(self, args):
-        '''
-        Prints the string representation of an instance based on the class name
-        '''
-        newInstance = args.partition(' ')
-        class_name = newInstance[0]
-        class_id = newInstance[2]
-
+        """Print the string representation of an instance"""
         if not args:
             print('** class name missing **')
             return
+        newInstance = args.split()
+        class_name = newInstance[0]
         if class_name not in ClassDict:
             print("** class doesn't exist **")
             return
-        if not class_id:
+        if len(newInstance) < 2:
             print('** instance id missing **')
             return
-        new_key = class_name + '.' + class_id
-        try:
-            print(storage._FileStorage__objects[new_key])
-        except BaseException:
+        class_id = newInstance[1]
+        instance_key = "{}.{}".format(class_name, class_id)
+        if instance_key in storage.all():
+            print(storage.all()[instance_key])
+        else:
             print("** no instance found **")
 
-    def do_destroy(self, arg):
-        '''
-        Deletes an instance basesd on
-        class name and id
-        '''
-        Newargs = ""
-        className = ""
-        class_id = ""
-        try:
-            Newargs = arg.split(" ")
-            className = new_args[0]
-            class_id = new_args[1]
-        except BaseException:
-            pass
-        if not class_name:
+    def do_destroy(self, args):
+        """Delete an instance based on class name and id"""
+        if not args:
             print('** class name missing **')
-        elif className not in ClassDict:
+            return
+        new_args = args.split()
+        class_name = new_args[0]
+        if class_name not in ClassDict:
             print("** class doesn't exist **")
-        elif not class_id:
+            return
+        if len(new_args) < 2:
             print("** instance id missing **")
+            return
+        class_id = new_args[1]
+        instance_key = "{}.{}".format(class_name, class_id)
+        if instance_key in storage.all():
+            del storage.all()[instance_key]
+            storage.save()
         else:
-            new_key = className + '.' + class_id
-            try:
-                del(storage._FileStorage__objects[new_key])
-                storage.save()
-            except KeyError:
-                print("** no instance found **")
+            print("** no instance found **")
 
-    def do_all(self, arg):
-        """
-        Prints all string representation of all instances
-        based or not on the class name
-        """
+    def do_all(self, args):
+        """Print all string representations of instances"""
         new_list = []
-        if arg:
-            if arg not in ClassDict:
-                print("** class doesn't exist **")
-                return
-            for key, value in storage._FileStorage__objects.items():
-                if key.split(".")[0] == arg:
-                    new_list.append(str(value))
-        else:
-            for key, value in storage._FileStorage__objects.items():
+        if args and args not in ClassDict:
+            print("** class doesn't exist **")
+            return
+        for key, value in storage.all().items():
+            if not args or key.split(".")[0] == args:
                 new_list.append(str(value))
         print(new_list)
 
-    def do_update(self, cls_name, obj_id, attribute_name, attribute_value):
-        """updates an instances attribute and
-        saves the chnge into the JSONfile"""
-        if cls_name is None:
+    def do_update(self, args):
+        """Update an instance attribute and save the change"""
+        new_args = args.split()
+        if not new_args:
             print("** class name missing **")
             return
-
-        if obj_id is None:
+        class_name = new_args[0]
+        if class_name not in ClassDict:
+            print("** class doesn't exist **")
+            return
+        if len(new_args) < 2:
             print("** instance id missing **")
             return
-
-        if attribute_name is None:
-            print("** attribute name missing **")
-            return
-
-        if attribute_value is None:
-            print("** value missing **")
-            return
-
-        key = "{}.{}".format(cls_name, obj_id)
-        if key not in self.__objects:
+        obj_id = new_args[1]
+        if "{}.{}".format(class_name, obj_id) not in storage.all():
             print("** no instance found **")
             return
-
-        ob = self.__objects[key]
-        if hasattr(ob, attribute_name):
-            setattr(ob, attribute_name, attribute_value)
-            ob.updated_at = datetime.now()
-            self.save()
-        else:
-            print("** attribute doesn't exist **")
-
+        if len(new_args) < 3:
+            print("** attribute name missing **")
+            return
+        attribute_name = new_args[2]
+        if len(new_args) < 4:
+            print("** value missing **")
+            return
+        attribute_value = new_args[3]
+        instance = storage.all()["{}.{}".format(class_name, obj_id)]
+        setattr(instance, attribute_name, attribute_value)
+        instance.save()
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
+
