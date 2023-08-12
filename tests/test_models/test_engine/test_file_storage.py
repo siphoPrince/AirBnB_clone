@@ -25,7 +25,8 @@ class TestFileStorage(unittest.TestCase):
     def test_attr_type(self):
         """test attribute type"""
         file_store = FileStorage()
-        self.assertTrue(type(file_store.__file_path) == str)
+        #self.assertTrue(type(file_store.__file_path) == str)
+        self.assertEqual(self.storage._FileStorage__file_path, "file.json")
         self.assertTrue(type(file_store.__objects) == dict)
 
     def test_all(self):
