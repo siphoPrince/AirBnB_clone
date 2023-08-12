@@ -123,16 +123,16 @@ class HBNBCommand(cmd.Cmd):
         print(new_list)
 
     def do_update(self, cls_name, obj_id, attribute_name, attribute_value):
-        """updates an instances attribute and 
+        """updates an instances attribute and
         saves the chnge into the JSONfile"""
         if cls_name is None:
             print("** class name missing **")
             return
-        
+
         if obj_id is None:
             print("** instance id missing **")
             return
-        
+
         if attribute_name is None:
             print("** attribute name missing **")
             return
@@ -140,12 +140,12 @@ class HBNBCommand(cmd.Cmd):
         if attribute_value is None:
             print("** value missing **")
             return
-        
+
         key = "{}.{}".format(cls_name, obj_id)
         if key not in self.__objects:
             print("** no instance found **")
             return
-        
+
         ob = self.__objects[key]
         if hasattr(ob, attribute_name):
             setattr(ob, attribute_name, attribute_value)
@@ -154,6 +154,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** attribute doesn't exist **")
 
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
- 
