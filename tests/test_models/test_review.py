@@ -4,6 +4,7 @@ import unittest
 from models.review import Review
 from models.base_model import BaseModel
 
+
 class TestReview(unittest.TestCase):
     """Test case for Review Class"""
     def test_inheritance(self):
@@ -34,6 +35,7 @@ class TestReview(unittest.TestCase):
         self.assertTrue(type(review.place_id) == str)
         self.assertTrue(type(review.user_id) == str)
         self.assertTrue(type(review.text) == str)
+
 
 if __name__ == "__main__":
     unittest.main()

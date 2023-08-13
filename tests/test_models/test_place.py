@@ -4,6 +4,7 @@ import unittest
 from models.place import Place
 from models import BaseModel
 
+
 class TestPlace(unittest.TestCase):
     """Test case for place class"""
     def test_inheritance(self):
@@ -28,7 +29,7 @@ class TestPlace(unittest.TestCase):
         self.assertTrue(hasattr(place, "latitude"))
         self.assertTrue(hasattr(place, "longitude"))
         self.assertTrue(hasattr(place, "amenity_ids"))
-    
+
     def test_attr_values(self):
         """test if attributes have correct values """
         place = Place()
@@ -58,6 +59,6 @@ class TestPlace(unittest.TestCase):
         self.assertTrue(type(place.latitude) == float)
         self.assertTrue(type(place.longitude) == float)
         self.assertTrue(type(place.amenity_ids) == list)
-        
+
 if __name__ == "__main__":
     unittest.main()

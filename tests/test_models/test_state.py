@@ -4,6 +4,7 @@ import models
 from models.state import State
 from models import BaseModel
 
+
 class TestState(unittest.TestCase):
     """Test case for state classes """
     def test_inheritance(self):
@@ -20,6 +21,6 @@ class TestState(unittest.TestCase):
         self.assertTrue(hasattr(state, "name"))
         self.assertEqual(state.name, "")
 
-        
+
 if __name__ == "__main__":
     unittest.main()
