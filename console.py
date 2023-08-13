@@ -22,7 +22,6 @@ ClassDict = {
     "Review": Review,
 }
 
-
 class HBNBCommand(cmd.Cmd):
     """Command interpreter for managing instances"""
 
@@ -136,6 +135,6 @@ class HBNBCommand(cmd.Cmd):
         setattr(instance, attribute_name, attribute_value)
         instance.save()
 
-
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
+
