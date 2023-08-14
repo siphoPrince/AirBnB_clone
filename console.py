@@ -96,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
                 del storage_list[i] 
                 storage.save()
                 break
-        else:
+            else:
             print("** no instance found **")
 
     def do_all(self, args):
@@ -108,8 +108,8 @@ class HBNBCommand(cmd.Cmd):
         storage_list = storage.all()
         for instance in storage_list:
             if (args == storage_list[instance].to_dict()["__class__"]):
-                new_list.append(storage_list[instance])
-                print(str(new_list))
+                new_list.append(str(storage_list[instance]))
+                print(new_list)
 
     def do_update(self, args):
         """Update an instance attribute and save the change"""
