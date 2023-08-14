@@ -67,11 +67,9 @@ class HBNBCommand(cmd.Cmd):
         if len(newInstance) < 2:
             print('** instance id missing **')
             return
-        storage.reload()
         storage_list = storage.all()
-        print(storage_list)
         instance_key = "{}.{}".format(class_name, class_id)
-        #for i in storage_list:
+        #for i in storage_list
             #if (class_name == storage_list[i].to_dict()["__class__"])
                 #print(str(storage_list[i]))
         if instance_key in storage_list:
