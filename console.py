@@ -93,7 +93,6 @@ class HBNBCommand(cmd.Cmd):
         storage_list = storage.all()
         for i, val in storage_list.items():
             if (class_id == val.id):
-                print(storage_list[i])
                 del storage_list[i] 
                 storage.save()
                 break
