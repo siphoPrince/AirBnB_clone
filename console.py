@@ -136,9 +136,9 @@ class HBNBCommand(cmd.Cmd):
                             return
                         else:
                             attribute_value = new_args[3]
-                            instance = storage.all()["{}.{}".format(class_name, obj_id)]
-                            setattr(instance, attribute_name, attribute_value)
-                            instance.save()
+                            #instance = storage.all()["{}.{}".format(class_name, obj_id)]
+                            setattr(storage_list[i], attribute_name, attribute_value)
+                            storage_list[i].save()
             else:
                 print("** no instance found **")
                 return
