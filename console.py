@@ -67,9 +67,10 @@ class HBNBCommand(cmd.Cmd):
             print('** instance id missing **')
             return
         class_id = newInstance[1]
-        instance_key = "{[]} {()}".format(class_name, class_id)
-        if instance_key in storage.all():
-            print(storage.all()[instance_key])
+        instance_key = "{} {}".format(class_name, class_id)
+        storage_list = storage.all()
+        if instance_key in storage_list:
+            print(str(storage_list[instance_key]))
         else:
             print("** no instance found **")
 
