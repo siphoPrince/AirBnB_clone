@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         for i in storage_list:
             if (class_name == storage_list[i].to_dict()["__class__"]):
                 if ( class_id == storage_list["id"]):
-                print(str(storage_list[i]))
+                    print(str(storage_list[i]))
 
         #if instance_key in storage_list:
          #   print(str(storage_list[instance_key]))
