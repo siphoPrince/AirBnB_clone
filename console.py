@@ -69,10 +69,10 @@ class HBNBCommand(cmd.Cmd):
         class_id = newInstance[1]
         #instance_key = "{[]} {()}".format(class_name, class_id)
         storage_list = storage.all()
-        print(storage_list["id"])
+        print(storage_list)
         for i in storage_list:
             if (class_name == storage_list[i].to_dict()["__class__"]):
-                if ( class_id == storage_list["id"]):
+               # if ( class_id == storage_list["id"]):
                     print(str(storage_list[i]))
 
         #if instance_key in storage_list:
