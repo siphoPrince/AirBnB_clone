@@ -20,6 +20,16 @@ class TestAmenity(unittest.TestCase):
         self.assertTrue(hasattr(amenity, 'created_at'))
         self.assertTrue(hasattr(amenity, 'updated_at'))
         self.assertTrue(hasattr(amenity, 'name'))
+    
+    def test_attr_type(self):
+        """Test attr types"""
+        amenity = Amenity()
+        self.assertTrue(type(amenity.name) == str)
+
+    def test_attr_values(self):
+        """test if attributes have correct values """
+        amenity = Amenity()
+        self.assertEqual(amenity.name, "")
 
 
 if __name__ == '__main__':
