@@ -51,6 +51,7 @@ class FileStorage:
         Deserializes the JSON file to __objects (if the JSON file exists).
         If the file doesn't exist or any other error occurs, do nothing.
         '''
+        dic =
         try:
             with open(self.__file_path, "r") as read_file:
                 data = json.load(read_file)
@@ -58,6 +59,7 @@ class FileStorage:
                     #if key not in self.__objects:
                      #   if value['__class__'] == 'User':
                     self.__objects[key] = BaseModel(**value)
+
                     #self.new(eval(key.split(".")[0])(**value))  
         except (FileNotFoundError, json.JSONDecodeError, TypeError):
             # Handle file not found, JSON decoding error, or unexpected value types
