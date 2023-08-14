@@ -91,10 +91,11 @@ class HBNBCommand(cmd.Cmd):
             return
         class_id = new_args[1]
         storage_list = storage.all()
-        for i in storage_list:
-            if (class_id == storage_list[i].to_dict()["id"]):
+        for i, val in storage_list.items():
+            if (class_id == val.id and class_name == val.__class__.name__):
                 del storage_list[i] 
                 storage.save()
+                break
         else:
             print("** no instance found **")
 
