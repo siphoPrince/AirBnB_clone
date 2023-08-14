@@ -67,22 +67,17 @@ class HBNBCommand(cmd.Cmd):
         if len(newInstance) < 2:
             print('** instance id missing **')
             return
-        #instance_key = "{}.{}".format(class_name, class_id)
         storage_list = storage.all()
-        #if instance_key not in storage_list:
-         #   print("no instance found")
-        #else:
-         #   print(str(storage_list))
-        for i in storage_list:
+        instance_key = "{}.{}".format(class_name, class_id)
+        #for i in storage_list:
             #if (class_name == storage_list[i].to_dict()["__class__"])
-            if (class_id not in storage_list):
-                 print("NOT FOUND")
-            else:
-                print(str(storage_list[i]))
-        #if instance_key in storage_list:
-         #   print(str(storage_list[instance_key]))
-            #else:
-             #   print("** no instance found **")
+                #print(str(storage_list[i]))
+        if instance_key in storage_list:
+            x = storage_list[instance_key]
+            print(x)
+            print(str(storage_list[instance_key]))
+        else:
+            print("** no instance found **")
 
     def do_destroy(self, args):
         """Delete an instance based on class name and id"""
