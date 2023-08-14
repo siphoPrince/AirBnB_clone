@@ -95,7 +95,8 @@ class HBNBCommand(cmd.Cmd):
             if (class_id == val.id):
                 del storage_list[i] 
                 storage.save()
-                #break
+                break
+                return
             else:
                 print("** no instance found **")
 
