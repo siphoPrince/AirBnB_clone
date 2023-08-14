@@ -49,9 +49,7 @@ class HBNBCommand(cmd.Cmd):
         if class_name in ClassDict:
             newInstance = ClassDict[class_name]()
             newInstance.save()
-            storage.new(newInstance)
             print(newInstance.id)
-            print(newInstance.__class__.__name__)
         else:
             print("** class doesn't exist **")
 
@@ -102,8 +100,8 @@ class HBNBCommand(cmd.Cmd):
         if args and args not in ClassDict:
             print("** class doesn't exist **")
             return
-        dic = storage.all()
-        print(dic)
+        #dic = storage.all()
+        #print(dic)
         for key, value in storage.all().items():
             if not args or key.split(".")[0] == args:
                 new_list.append(str(value))
