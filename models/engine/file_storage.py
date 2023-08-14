@@ -17,7 +17,7 @@ class FileStorage:
     fillestorage class representation
     '''
 
-    __file_path = "JSONstorage.json"
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
