@@ -96,14 +96,16 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, args):
         """Print all string representations of instances"""
-        new_list = []
         if args and args not in ClassDict:
             print("** class doesn't exist **")
             return
-        
-        for key, value in storage.all().items():
-            if not args or key.split(".")[0] == args:
-                new_list.append(str(value))
+        new_list = []
+        #for key, value in storage.all().items():
+            #if not args or key.split(".")[0] == args:
+                # new_list.append(str(value))
+        storage_list = storage.all()
+        for instance in storage_list():
+                print(storage_list[instance])
             #if (args == key.to_dict()["__class__"]):
                 #print(key)
                 print(new_list)
