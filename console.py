@@ -100,9 +100,9 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
-    def do_all(self, args):
+    def do_all(self, args=None):
         """Print all string representations of instances"""
-        if args and args not in ClassDict:
+        if len(args) == 1 and args not in ClassDict:
             print("** class doesn't exist **")
             return
         new_list = []
