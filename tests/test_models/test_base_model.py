@@ -52,6 +52,21 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(base_model.created_at, datetime(2023, 8, 10, 12, 34, 56, 789012))
         self.assertEqual(base_model.updated_at, datetime(2023, 8, 11, 1, 23, 45, 678901))
 
+        def test_save(self, mock_storage):
+            """
+             test save and update at is working and storage call
+               save
+            """
+            base_model = BaseModel()
+            old_created = base_model.created_at
+            old_update = base_model.updated_at
+            base_model.save()
+            new_created = base_model.created_at
+            new_updated = base_model.updated_at
+            self.assertNotEqual(old_update, new_updated)
+            self.assertEqual(old_created, new_created)
+            self.assertEqual(base_model.updated_at, datetime.now())
+
 
 if __name__ == '__main__':
     unittest.main()
