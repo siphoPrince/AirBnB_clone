@@ -76,7 +76,7 @@ class HBNBCommand(cmd.Cmd):
         #if instance_key in storage_list:
          #   print(str(storage_list[instance_key]))
             else:
-            print("** no instance found **")
+                print("** no instance found **")
 
     def do_destroy(self, args):
         """Delete an instance based on class name and id"""
