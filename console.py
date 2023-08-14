@@ -67,11 +67,15 @@ class HBNBCommand(cmd.Cmd):
             print('** instance id missing **')
             return
         class_id = newInstance[1]
-        instance_key = "{[]} {()}".format(class_name, class_id)
+        #instance_key = "{[]} {()}".format(class_name, class_id)
         storage_list = storage.all()
-        if instance_key in storage_list:
-            print(str(storage_list[instance_key]))
-        else:
+        for i in storage_list:
+            if (class_name == storage_list[i].to_dict()["__class__"]):
+                print(str(storage_list[i]))
+
+        #if instance_key in storage_list:
+         #   print(str(storage_list[instance_key]))
+            else:
             print("** no instance found **")
 
     def do_destroy(self, args):
