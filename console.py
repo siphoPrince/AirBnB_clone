@@ -69,6 +69,7 @@ class HBNBCommand(cmd.Cmd):
             return
         storage.reload()
         storage_list = storage.all()
+        print(storage_list)
         instance_key = "{}.{}".format(class_name, class_id)
         #for i in storage_list:
             #if (class_name == storage_list[i].to_dict()["__class__"])
