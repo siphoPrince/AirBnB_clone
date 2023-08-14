@@ -55,9 +55,10 @@ class FileStorage:
             with open(self.__file_path, "r") as read_file:
                 data = json.load(read_file)
                 for key, value in data.items():
-                    if key not in self.__objects:
-                        if value['__class__'] == 'User':
-                            self.__objects[key] = BaseModel(**value)
+                    #if key not in self.__objects:
+                     #   if value['__class__'] == 'User':
+                      #      self.__objects[key] = BaseModel(**value)
+                    self.new(eval(key.split(".")[0])(**value))  
         except (FileNotFoundError, json.JSONDecodeError, TypeError):
             # Handle file not found, JSON decoding error, or unexpected value types
             pass
