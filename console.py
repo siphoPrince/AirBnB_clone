@@ -104,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
             #if not args or key.split(".")[0] == args:
                 # new_list.append(str(value))
         storage_list = storage.all()
-        for instance in storage_list():
+        for instance in storage_list:
                 print(storage_list[instance])
             #if (args == key.to_dict()["__class__"]):
                 #print(key)
