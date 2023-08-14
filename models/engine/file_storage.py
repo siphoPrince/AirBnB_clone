@@ -55,6 +55,7 @@ class FileStorage:
         try:
             with open(self.__file_path, "r") as read_file:
                 data = json.load(read_file)
+                print(read_file)
                 for key, value in data.items():
                     #if key not in self.__objects:
                      #   if value['__class__'] == 'User':
