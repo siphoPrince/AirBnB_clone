@@ -42,7 +42,7 @@ class FileStorage:
 
         my_dict = {}
         for key, value in self.__objects.items():
-            print(key, value)
+            print(self.__objects)
             my_dict[key] = value.to_dict()
         with open(self.__file_path, "w", encoding="utf-8") as write_file:
             json.dump(my_dict, write_file)
@@ -55,7 +55,7 @@ class FileStorage:
         try:
             with open(self.__file_path, "r") as read_file:
                 data = json.load(read_file)
-                print(read_file)
+                print("data:{}".format( data))
                 for key, value in data.items():
                     #if key not in self.__objects:
                      #   if value['__class__'] == 'User':
