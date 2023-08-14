@@ -42,6 +42,7 @@ class FileStorage:
 
         my_dict = {}
         for key, value in self.__objects.items():
+            print(key, value)
             my_dict[key] = value.to_dict()
         with open(self.__file_path, "w", encoding="utf-8") as write_file:
             json.dump(my_dict, write_file)
