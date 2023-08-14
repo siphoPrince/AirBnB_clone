@@ -107,9 +107,9 @@ class HBNBCommand(cmd.Cmd):
         for instance in storage_list:
             #print("first item: {}".format(storage_list[instance]))
             new_list.append(str(storage_list[instance]))
-            print(new_list)
+            #print(new_list)
             if (args == storage_list[instance].to_dict()["__class__"]):
-                new_list.append(storage_list[instance])
+                new_list.append(str(storage_list[instance]))
                 print(new_list)
 
     def do_update(self, args):
