@@ -102,9 +102,11 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         print(storage.all())
-        #for key, value in storage.all().items():
+        for key, value in storage.all().items():
          #   if not args or key.split(".")[0] == args:
           #      new_list.append(str(value))
+            if (args == key.to_dict()["__class__"]):
+                print(key)
         print(new_list)
 
     def do_update(self, args):
