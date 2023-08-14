@@ -4,7 +4,7 @@ This is a base model that defines all common attributes and
 methods of other classes
 '''
 from datetime import datetime
-from models import storage
+#from models import storage
 import uuid
 
 
