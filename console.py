@@ -101,9 +101,10 @@ class HBNBCommand(cmd.Cmd):
         if args and args not in ClassDict:
             print("** class doesn't exist **")
             return
-        for key, value in storage.all().items():
-            if not args or key.split(".")[0] == args:
-                new_list.append(str(value))
+        print(storage.all())
+        #for key, value in storage.all().items():
+         #   if not args or key.split(".")[0] == args:
+          #      new_list.append(str(value))
         print(new_list)
 
     def do_update(self, args):
