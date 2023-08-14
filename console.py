@@ -67,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
             print('** instance id missing **')
             return
         class_id = newInstance[1]
-        instance_key = "{}.{}".format(class_name, class_id)
+        instance_key = "{[]} {()}".format(class_name, class_id)
         if instance_key in storage.all():
             print(storage.all()[instance_key])
         else:
@@ -100,14 +100,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         new_list = []
-        #for key, value in storage.all().items():
-            #if not args or key.split(".")[0] == args:
-                # new_list.append(str(value))
         storage_list = storage.all()
         for instance in storage_list:
-            #print("first item: {}".format(storage_list[instance]))
-            #new_list.append(str(storage_list[instance]))
-            #print(new_list)
             if (args == storage_list[instance].to_dict()["__class__"]):
                 new_list.append(str(storage_list[instance]))
                 print(new_list)
