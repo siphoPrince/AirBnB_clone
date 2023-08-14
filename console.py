@@ -106,7 +106,9 @@ class HBNBCommand(cmd.Cmd):
         storage_list = storage.all()
         for instance in storage_list:
             print("first item: {}".format(storage_list[instance]))
-            if args == storage_list[instance].to_dict():
+            new_list.append(storage_list[instance])
+            print(new_list)
+            if (args == storage_list[instance].to_dict()["__class__"]):
                 new_list.append(storage_list[instance])
                 print(new_list)
 
