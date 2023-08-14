@@ -48,9 +48,10 @@ class HBNBCommand(cmd.Cmd):
         class_name = args
         if class_name in ClassDict:
             newInstance = ClassDict[class_name]()
-            storage.new(newInstance)
+            #storage.new(newInstance)
             storage.save()
             print(newInstance.id)
+            print(newInstance.__class__.__name__)
         else:
             print("** class doesn't exist **")
 
