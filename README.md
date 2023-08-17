@@ -1,4 +1,4 @@
-# AirBnB Clone Command Inte
+# AirBnB Clone Command 
 
 Welcome to the AirBnB Clone Command Interpreter project! This project is the first step in building the AirBnB clone, a web application that will encompass various components like HTML/CSS templating, database storage, API, and front-end integration. The primary goal of this project is to develop a command interpreter that will manage AirBnB objects and serve as the foundation for the subsequent stages of development.
 
