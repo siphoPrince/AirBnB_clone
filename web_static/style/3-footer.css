@@ -1,8 +1,7 @@
 footer {
-    color: white;
+    background-color: #00ff00;
     height: 60px;
     width: 100%;
-    border-top: 1px solid #cccccc;
     display:flex; 
     flex-direction: column; 
     justify-content: center; 
